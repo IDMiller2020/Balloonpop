@@ -13,20 +13,7 @@ function startGame(){
   startButton.setAttribute("disabled", "true")
   inflateButton.removeAttribute("disabled")
 
-  setTimeout(() => {
-    console.log("its been three seconds")
-
-    inflateButton.setAttribute("disabled", "true")
-    startButton.removeAttribute("disabled")
-
-    clickCount = 0
-    height = 120
-    width = 100
-
-    draw()
-
-
-  }, 3000)
+  setTimeout(stopGame, 3000)
 }
 
 function inflate(){
@@ -54,4 +41,17 @@ function draw(){
   
   clickCountElem.innerText = clickCount.toString()
   popCountElem.innerText = popCount.toString()
+}
+
+function stopGame(){
+  console.log("the game is over")
+
+  inflateButton.setAttribute("disabled", "true")
+  startButton.removeAttribute("disabled")
+
+  clickCount = 0
+  height = 120
+  width = 100
+
+  draw()
 }
