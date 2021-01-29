@@ -7,7 +7,8 @@ let height = 120
 let width = 100
 let inflationRate = 20
 let maxsize = 300
-let popCount = 0
+let currentPopCount = 0
+let highestPopCount = 0
 let gameLenght = 5000
 let clockId = 0
 let timeRemaining = 0
@@ -43,7 +44,7 @@ function inflate(){
   width += inflationRate
 
   if(height >= maxsize){
-    popCount++
+    currentPopCount++
     console.log("pop the balloon")
     height = 0
     width = 0
@@ -56,12 +57,14 @@ function draw(){
   let balloonElement = document.getElementById("balloon")
   let clickCountElem = document.getElementById("click-count")
   let popCountElem = document.getElementById("pop-count")
+  let highPopCountElem = document.getElementById("high-pop-count")
   
   balloonElement.style.height = height + "px"
   balloonElement.style.width = width + "px"
   
   clickCountElem.innerText = clickCount.toString()
-  popCountElem.innerText = popCount.toString()
+  popCountElem.innerText = currentPopCount.toString()
+  highPopCountElem.innerText = highestPopCount.toString()
 }
 
 function stopGame(){
@@ -73,6 +76,12 @@ function stopGame(){
   clickCount = 0
   height = 120
   width = 100
+
+  if(currentPopCount > highestPopCount){
+    highestPopCount = currentPopCount
+  }
+
+  currentPopCount = 0
 
   stopClock()
   draw()
