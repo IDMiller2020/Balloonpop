@@ -1,5 +1,8 @@
+// BUTTONS
 let startButton = document.getElementById("start-button")
 let inflateButton = document.getElementById("inflate-button")
+
+// #region GAME LOGIC AND DATA
 
 // DATA
 let clickCount = 0
@@ -52,7 +55,6 @@ function inflate(){
   draw()
 }
 
-
 function draw(){
   let balloonElement = document.getElementById("balloon")
   let clickCountElem = document.getElementById("click-count")
@@ -85,4 +87,16 @@ function stopGame(){
 
   stopClock()
   draw()
+}
+
+// #endregion
+
+let players = []
+
+function setPlayer(event){
+  event.preventDefault()
+  let form = event.target
+  
+  let playerName = form.playerName.value
+  form.reset()
 }
