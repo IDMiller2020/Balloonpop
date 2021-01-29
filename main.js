@@ -113,12 +113,18 @@ function setPlayer(event){
 console.log(currentPlayer)
 
   form.reset()
+  document.getElementById("game").classList.remove("hidden")
+  form.classList.add("hidden")
   draw()
+}
+
+function changePlayer(){
+  document.getElementById("player-form").classList.remove("hidden")
+  document.getElementById("game").classList.add("hidden")
 }
 function savePlayers(){
   window.localStorage.setItem("players", JSON.stringify(players))
 }
-
 function loadPlayers(){
   let playersData = JSON.parse(window.localStorage.getItem("players"))
   if(playersData){
