@@ -1,18 +1,52 @@
-body{
-  background-color: wheat;
+:root{
+  --primary: #f393fd;
+  --primary-darken: #bf30ce;
+  --bg: #e0d9d9;
+  --shadow: 2px 0 8px rgba(0,0,0,.3);
+  --corners: 4px;
+  --light: #fdfdfd;
+  --text-color: #3a3838;
 }
 
+body{
+  background-color: var(--bg);
+  font-family: 'Permanent Marker', cursive;
+  font-size: 16pt;
+  color: var(--text-color)
+}
 header{
   margin: 3em 0;
 }
 
-.logo-container{
-  width: 50%;
-  margin: auto;
-}
-
 img{
   max-width: 100%;
+}
+
+form{
+  margin: 0;
+}
+
+input{
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--text-color);
+  outline: none;
+  font-size: 14pt;
+}
+
+button{
+  background-color: var(--primary);
+  color: var(--light);
+  border: 1px solid var(--primary-darken);
+  border-radius: var(--corners);
+  box-shadow: var(--shadow);
+  text-transform: uppercase;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: var(--primary-darken);
 }
 
 .balloon{
@@ -20,15 +54,32 @@ img{
   width: 100px;
   background-color: blue;
   border-radius: 50%;
+  transition: all .2s ease;
+}
+
+.container{
+  width: 50%;
+  margin: auto;
+}
+
+.shadow{
+  filter: drop-shadow(var(--shadow));
 }
 
 .card{
-  background-color: white;
+  background-color: var(--light);
   padding: 1em;
-  box-shadow: 2px 0 8px rgba(0,0,0,.3);
+  box-shadow: var(--shadow);
+  border-radius: var(--corners);
 }
 
+.d-flex{
+  display: flex;
+}
 
+.d-flex.space-between{
+  justify-content: space-between;
+}
 
 .hidden{
   display: none !important;
