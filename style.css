@@ -66,7 +66,7 @@ button:hover{
   background-color: var(--dark-lighten);
   position:absolute;
   top: -80px;
-  left: 0px;
+  left: 50px;
   display: flex;
   justify-content: center;
   transition: all .05s linear;
@@ -93,6 +93,15 @@ button:hover{
   border-top-left-radius: 20px;
   z-index: 2;
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.pump-box span{
+  background-color: antiquewhite;
+  padding: 0.5em;
 }
 
 .balloon{
