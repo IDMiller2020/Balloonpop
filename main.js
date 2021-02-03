@@ -49,12 +49,14 @@ function inflate(){
 
 function checkBalloonPop(){
   if(height >= maxsize){
-    currentPopCount++
+    // @ts-ignore
+    document.getElementById("pop-sound").play()
     console.log("pop the balloon")
     let balloonElement = document.getElementById("balloon")
     balloonElement.classList.remove(currentColor)
     getRandomColor()
     balloonElement.classList.add(currentColor)
+    currentPopCount++
     height = 30
     width = 10
   }
