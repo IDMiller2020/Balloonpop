@@ -1,7 +1,3 @@
-// BUTTONS
-let startButton = document.getElementById("start-button")
-let inflateButton = document.getElementById("inflate-button")
-
 // #region GAME LOGIC AND DATA
 
 // DATA
@@ -16,12 +12,13 @@ let gameLenght = 5000
 let clockId = 0
 let timeRemaining = 0
 let currentPlayer = {}
+let currentColor = "red"
+let possibleColors = ["red", "green", "blue", "purple", "pink"]
 
 
 function startGame(){
-
-  startButton.setAttribute("disabled", "true")
-  inflateButton.removeAttribute("disabled")
+  document.getElementById("game-controls").classList.remove("hidden")
+  document.getElementById("main-controls").classList.add("hidden")
   startClock()
   setTimeout(stopGame, gameLenght)
 }
@@ -46,14 +43,26 @@ function inflate(){
   clickCount++
   height += inflationRate
   width += inflationRate
+  checkBalloonPop()
+  draw()
+}
 
+function checkBalloonPop(){
   if(height >= maxsize){
     currentPopCount++
     console.log("pop the balloon")
-    height = 0
-    width = 0
+    let balloonElement = document.getElementById("balloon")
+    balloonElement.classList.remove(currentColor)
+    getRandomColor()
+    balloonElement.classList.add(currentColor)
+    height = 30
+    width = 10
   }
-  draw()
+}
+
+function getRandomColor(){
+let i = Math.floor(Math.random() * possibleColors.length);
+currentColor = possibleColors[i]
 }
 
 function draw(){
@@ -68,7 +77,7 @@ function draw(){
   
   clickCountElem.innerText = clickCount.toString()
   popCountElem.innerText = currentPopCount.toString()
-  highPopCountElem.innerText = currentPlayer.topScore.toString()
+  highPopCountElem.innerText = currentPlayer.topScore
 
   playerNameElem.innerText = currentPlayer.name
 }
@@ -76,8 +85,8 @@ function draw(){
 function stopGame(){
   console.log("the game is over")
 
-  inflateButton.setAttribute("disabled", "true")
-  startButton.removeAttribute("disabled")
+  document.getElementById("main-controls").classList.remove("hidden")
+  document.getElementById("game-controls").classList.add("hidden")
 
   clickCount = 0
   height = 120
