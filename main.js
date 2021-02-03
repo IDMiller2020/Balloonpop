@@ -160,6 +160,7 @@ function drawScoreboard(){
       <i class="fa fa-user"></i>
       ${player.name}
     </span>
+      score:
       ${player.topScore}
   </div>
     `
